@@ -15,8 +15,25 @@ public class StudentDAO {
         }
     }
 
-    public void remove() {
+    public void remove(int id) {
+        Node current = head;
 
+        if(head != null) {
+            if(current.student.getId() == id) {
+                head = head.next;
+                tail.next = head;
+            } else {
+                do {
+                    Node nextNode = current.next;
+                    if(nextNode.student.getId() == id) {
+                        current.next = nextNode.next;
+                        break;
+                    }
+
+                    current = current.next;
+                } while (current != head);
+            }
+        }
     }
 
     public void print() {
@@ -41,7 +58,6 @@ public class StudentDAO {
                     System.out.println(" " + current.student);
                     return true;
                 }
-                current = current.next;
             } while (current != head);
         }
         return false;
