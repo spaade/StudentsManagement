@@ -2,7 +2,7 @@ public class StudentDAO {
     Node head, tail;
     Student student;
 
-    private void push(Student student) {
+    public void push(Student student) {
         Node newNode = new Node(student);
         if (head == null) {
             head = newNode;
@@ -13,13 +13,6 @@ public class StudentDAO {
             tail = newNode;
             tail.next = head;
         }
-    }
-
-    public Student createStudent(int id, String name, String grade) {
-        Student student = new Student(id, name, grade);
-        student.setId(id);
-        push(student);
-        return student;
     }
 
     public void remove() {
