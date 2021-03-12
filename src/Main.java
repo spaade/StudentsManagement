@@ -50,12 +50,18 @@ public class Main {
     }
 
     public static Student studentBuilder() {
-        int id;
+        int id = 0;
         String name, grade;
+
+        StudentDAO studentDAO = new StudentDAO();
 
         System.out.println("\n");
         System.out.println("Enter student id: ");
         id = read.nextInt();
+        if (studentDAO.searchById(id)) {
+            System.out.println("Student id already registered. Try it again with a different id.");
+            System.exit(0);
+        }
         System.out.print("id: " + id);
         System.out.println("\n");
 
